@@ -253,6 +253,20 @@
     .controls button:hover {
       background-color: #2878b2;
     }
+    .download-btn {
+  background-color: #3498db; /* Change to your theme color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #2980b9; /* Darker shade of the theme color */
+}
 
     /* Contact */
     .contact {
@@ -269,20 +283,7 @@
       text-align: center;
       padding: 1.5em 0;
       margin-top: 2em;
-      .download-btn {
-  background-color: #3498db; /* Change to your theme color */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.download-btn:hover {
-  background-color: #2980b9; /* Darker shade of the theme color */
-}
+      
     }
   </style>
 </head>
@@ -424,7 +425,7 @@
   <center><img id="certificate" class="active" src="cert1.jpg" alt="Certificate"></center>
 </section>
 <section id="resume" class="resume">
-  <a href="path/to/resume-2.pdf" download="resume-2.pdf">
+  <a href="resume-2.pdf" download="resume.pdf">
   <button class="download-btn">Download Resume</button>
   </a>
 </section>
