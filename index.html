@@ -247,7 +247,7 @@
       font-size: 1em;
       cursor: pointer;
       border-radius: 5px;
-      transition: background 0.3s;
+      transition: 0.3s;
       margin: 5px;
     }
 
@@ -286,13 +286,13 @@
       text-align: center;
       padding: 1.5em 0;
       margin-top: 2em;
-      
     }
-    .download-btn:hckground-color: #3498db; /* Change to your theme color */
+    .download-btn{
+  background-color: #3498db; /* Change to your theme color */
   color: white;
   padding: 10px 20px;
   border: none;
-  align:center;
+  justify-content:center;
   border-radius: 5px;
   font-size: 1em;
   cursor: pointer;
@@ -441,12 +441,12 @@
     <button onclick="showCertificate(3)">4</button>
     <button onclick="showCertificate(4)">5</button>
   </div>
-  <center><img id="certificate" class="active" src="cert1.jpg" alt="Certificate"></center>
+<center><img id="certificate" class="active" src="cert1.jpg" alt="Certificate"></center>
 </section>
 <section id="section" class="section">
-  <centered><a href="Resume-2.pdf" download="Resume-2.pdf">
-  <button class="download-btn" align="center">Download Resume</button>
-  </a></centered>
+  <center><a href="Resume-2.pdf" download="Resume-2.pdf">
+  <button class="download-btn">Download Resume</button>
+  </a></center>
 </section>
 <section id="contact" class="contact">
   <h2>Contact</h2>
@@ -478,6 +478,10 @@
     img.src = certificates[index];
     currentCertificate = index;
   }
+  setInterval(() => {
+      currentCertificate = (currentCertificate + 1) % certificates.length; // Loop back to the start if at the end
+      showCertificate(currentCertificate);
+    }, 3000); 
 </script>
 
 </body>
