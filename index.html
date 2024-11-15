@@ -1,494 +1,503 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meghrajsinh Parmar | Portfolio</title>
-  <style>
-    /* Basic Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    body {
-      background-color: #1d2026;
-      color: #859900;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
-    /* Header */
-    header {
-      text-align: center;
-      padding: 2em 1em;
-      background-color: #3498db;
-      color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      position:static;
-      top: 0;
-      z-index: 10;
-    }
-
-    nav {
-      margin-top: 1em;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    a:hover {
-      color: #859900;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-size: 1.1em;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #859900;
-    }
-
-    header h1 {
-      font-size: 2.5em;
-      font-weight: bold;
-    }
-
-    header p {
-      font-size: 1.2em;
-      font-style: italic;
-    }
-
-    /* Sections */
-    section {
-      max-width: 900px;
-      margin: 4em auto;
-      padding: 2em;
-      justify-content:center;
-      background-color: #282c34;
-      color: #859900;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    section.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    h2 {
-      font-size: 2.5em;
-      margin-bottom: 0.5em;
-      color: #3498db;
-      text-align: center;
-      position: relative;
-    }
-
-    h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background-color: #3498db;
-      margin: 0.5em auto;
-    }
-
-    /* About */
-    .about {
-      text-align: center;
-      font-size: 1.1em;
-      line-height: 1.6;
-      color: #ddd;
-    }
-
-    /* Skills */
-    .skills-category {
-  font-size: 1.3em;
-  color: #3498db;
-  display: block;
-  text-align: center;
-  width: 100%;
-  margin-top: 1.5em;
-  font-weight: bold;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 0.5em;
-}
-
-.skills-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1em;
-  
-}
-
-.skills .skill {
-  background-color: #282c34;
-  padding: 1em;
-  border-radius: 10px;
-  text-align: center;
-  width: 150px;
-  transition: transform 0.3s ease;
-  color: #3498db;
-  position: relative;
-  cursor: pointer;
-}
-
-.skills .description {
-  display: none;
-  margin-top: 5px;
-  padding: 10px;
-  background-color: #3498db;
-  color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  position: absolute;
-  width: 200px;
-  left: 50%;
-  top: 100%;
-  transform: translateX(-50%);
-  z-index: 2;
-  
-}
-
-.skills .skill:hover .description {
-  display: contents;
-}
-
-.skills .skill:hover {
-  transform: scale(1.05);
-}
-
-
-
-    /* Projects */
- .projects-category {
-  font-size: 1.3em;
-  color: #3498db;
-  text-align: center;
-  width: 100%;
-  margin-top: 1.5em;
-  font-weight: bold;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 0.5em;
-}
-
-.projects-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  
-}
-
-.projects .project-item {
-  background-color: #282c34;
-  padding: 1em;
-  border-radius: 10px;
-  text-align: center;
-  width: 200px; /* Adjust width of each item */
-  transition: transform 0.3s ease;
-  color: #3498db;
-  position: relative;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.projects .description {
-  display: none;
-  margin-top: 5px;
-  padding: 10px;
-  background-color: #3498db;
-  color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  position: absolute;
-  width: 200px;
-  left: 50%;
-  top: 100%;
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
-.projects .project-item:hover .description {
-  display: contents;
-}
-
-.projects .project-item:hover {
-  transform: scale(1.05);
-}
-
-
-    /* Certificates */
-    .certificates {
-      text-align: center;
-    }
-
-    .certificates img {
-      max-width: 80%;
-      border-radius: 10px;
-      margin-top: 1em;
-      display: none;
-      text-align: center;
-    }
-
-    .certificates img.active {
-      display: block;
-      opacity: 1;
-      
-    }
-    
-    .controls button {
-      background-color: #3498db;
-      border: none;
-      color: white;
-      padding: 0.5em 1em;
-      font-size: 1em;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: 0.3s;
-      margin: 5px;
-    }
-
-    .controls button:hover {
-      background-color: #2878b2;
-    }
-    .download-btn {
-  background-color: #3498db; /* Change to your theme color */
-  color: white;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1em;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-
-
-    /* Contact */
-    .contact {
-      text-align: center;
-      font-size: 1.1em;
-      color: #3498db;
-      margin-top: 1.5em;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #3498db;
-      color: #fff;
-      text-align: center;
-      padding: 1.5em 0;
-      margin-top: 2em;
-    }
-    .download-btn{
-  background-color: #3498db; /* Change to your theme color */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  justify-content:center;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.download-btn:hover {
-  background-color: #2980b9; /* Darker shade of the theme color */
-}over {
-  background-color: #2980b9; /* Darker shade of the theme color */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meghrajsinh Parmar | Portfolio</title>
+    <style>
+        /* Basic Reset */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        body {
+            background-color: #1d2026;
+            color: #859900;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        /* Header */
+        
+        header {
+            text-align: center;
+            padding: 2em 1em;
+            background-color: #3498db;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: static;
+            top: 0;
+            z-index: 10;
+        }
+        
+        nav {
+            margin-top: 1em;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        a:hover {
+            color: #859900;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1em;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #859900;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            font-style: italic;
+        }
+        /* Sections */
+        
+        section {
+            max-width: 900px;
+            margin: 4em auto;
+            padding: 2em;
+            justify-content: center;
+            background-color: #282c34;
+            color: #859900;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            color: #3498db;
+            text-align: center;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;
+            margin: 0.5em auto;
+        }
+        /* About */
+        
+        .about {
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #ddd;
+        }
+        /* Skills */
+        
+        .skills-category {
+            font-size: 1.3em;
+            color: #3498db;
+            display: block;
+            text-align: center;
+            width: 100%;
+            margin-top: 1.5em;
+            font-weight: bold;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5em;
+        }
+        
+        .skills-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+        
+        .skills .skill {
+            background-color: #282c34;
+            padding: 1em;
+            border-radius: 10px;
+            text-align: center;
+            width: 150px;
+            transition: transform 0.3s ease;
+            color: #3498db;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .skills .description {
+            display: none;
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            position: absolute;
+            width: 200px;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .skills .skill:hover .description {
+            display: contents;
+        }
+        
+        .skills .skill:hover {
+            transform: scale(1.05);
+        }
+        /* Projects */
+        
+        .projects-category {
+            font-size: 1.3em;
+            color: #3498db;
+            text-align: center;
+            width: 100%;
+            margin-top: 1.5em;
+            font-weight: bold;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5em;
+        }
+        
+        .projects-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .projects .project-item {
+            background-color: #282c34;
+            padding: 1em;
+            border-radius: 10px;
+            text-align: center;
+            width: 200px;
+            /* Adjust width of each item */
+            transition: transform 0.3s ease;
+            color: #3498db;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .projects .description {
+            display: none;
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            position: absolute;
+            width: 200px;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .projects .project-item:hover .description {
+            display: contents;
+        }
+        
+        .projects .project-item:hover {
+            transform: scale(1.05);
+        }
+        /* Certificates */
+        
+        .certificates {
+            text-align: center;
+        }
+        
+        .certificates img {
+            max-width: 80%;
+            border-radius: 10px;
+            margin-top: 1em;
+            display: none;
+            text-align: center;
+        }
+        
+        .certificates img.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        .controls button {
+            background-color: #3498db;
+            border: none;
+            color: white;
+            padding: 0.5em 1em;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin: 5px;
+        }
+        
+        .controls button:hover {
+            background-color: #2878b2;
+        }
+        
+        .download-btn {
+            background-color: #3498db;
+            /* Change to your theme color */
+            color: white;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        /* Contact */
+        
+        .contact {
+            text-align: center;
+            font-size: 1.1em;
+            color: #3498db;
+            margin-top: 1.5em;
+        }
+        /* Footer */
+        
+        footer {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 1.5em 0;
+            margin-top: 2em;
+        }
+        
+        .download-btn {
+            background-color: #3498db;
+            /* Change to your theme color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            justify-content: center;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background-color: #2980b9;
+            /* Darker shade of the theme color */
+        }
+        
+        over {
+            background-color: #2980b9;
+            /* Darker shade of the theme color */
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Meghrajsinh Parmar</h1>
-  <p>Innovative Programmer & Problem-Solver</p>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#certificates">Certificates</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <header>
+        <h1>Meghrajsinh Parmar</h1>
+        <p>Innovative Programmer & Problem-Solver</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#certificates">Certificates</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-<section id="about" class="about">
-  <h2>About Me</h2>
-  <p>I am a forward-thinking programmer with a strong foundation in software development, eager to apply my skills in dynamic and innovative teams.</p>
-</section>
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>I am a forward-thinking programmer with a strong foundation in software development, eager to apply my skills in dynamic and innovative teams.</p>
+    </section>
 
-<section id="skills" class="skills">
-  <h2>Technical Skills</h2>
+    <section id="skills" class="skills">
+        <h2>Technical Skills</h2>
 
-  <div class="skills-category">Programming Languages</div>
-  <div class="skills-list">
-    <div class="skill">
-      Python
-      <div class="description">A versatile language used for web development, data science, and scripting.</div>
-    </div>
-    <div class="skill">
-      Java
-      <div class="description">An object-oriented language commonly used in backend and Android development.</div>
-    </div>
-    <div class="skill">
-      C
-      <div class="description">A low-level programming language used for system programming.</div>
-    </div>
-  </div>
+        <div class="skills-category">Programming Languages</div>
+        <div class="skills-list">
+            <div class="skill">
+                Python
+                <div class="description">A versatile language used for web development, data science, and scripting.</div>
+            </div>
+            <div class="skill">
+                Java
+                <div class="description">An object-oriented language commonly used in backend and Android development.</div>
+            </div>
+            <div class="skill">
+                C
+                <div class="description">A low-level programming language used for system programming.</div>
+            </div>
+        </div>
 
-  <div class="skills-category">Web Technologies</div>
-  <div class="skills-list">
-    <div class="skill">
-      HTML
-      <div class="description">The standard markup language for creating web pages.</div>
-    </div>
-    <div class="skill">
-      CSS
-      <div class="description">A style sheet language for describing the look and formatting of documents.</div>
-    </div>
-    <div class="skill">
-      JavaScript
-      <div class="description">A versatile language for interactive web features.</div>
-    </div>
-  </div>
-    
-<!-- Frameworks Category -->
-<div class="skills-category">Frameworks</div>
-<div class="skills-list">
-  <div class="skill">
-    React
-    <div class="description">A JavaScript library for building user interfaces with a component-based approach.</div>
-  </div>
-  <div class="skill">
-    Node.js
-    <div class="description">A runtime for executing JavaScript on the server, enabling scalable backend services.</div>
-  </div>
-  <div class="skill">
-    Django
-    <div class="description">A high-level Python web framework that encourages rapid, secure, and scalable development.</div>
-  </div>
-</div>
+        <div class="skills-category">Web Technologies</div>
+        <div class="skills-list">
+            <div class="skill">
+                HTML
+                <div class="description">The standard markup language for creating web pages.</div>
+            </div>
+            <div class="skill">
+                CSS
+                <div class="description">A style sheet language for describing the look and formatting of documents.</div>
+            </div>
+            <div class="skill">
+                JavaScript
+                <div class="description">A versatile language for interactive web features.</div>
+            </div>
+        </div>
 
-<!-- Tools Category -->
-<div class="skills-category">Tools</div>
-<div class="skills-list">
-  <div class="skill">
-    Git
-    <div class="description">A version control system for tracking changes in source code during software development.</div>
-  </div>
-  <div class="skill">
-    Docker
-    <div class="description">A tool that packages software into containers to run consistently across different environments.</div>
-  </div>
-  <div class="skill">
-    VS Code
-    <div class="description">A lightweight, open-source code editor with extensive plugin support and customization options.</div>
-  </div>
-</div>
-</section>
+        <!-- Frameworks Category -->
+        <div class="skills-category">Frameworks</div>
+        <div class="skills-list">
+            <div class="skill">
+                React
+                <div class="description">A JavaScript library for building user interfaces with a component-based approach.</div>
+            </div>
+            <div class="skill">
+                Node.js
+                <div class="description">A runtime for executing JavaScript on the server, enabling scalable backend services.</div>
+            </div>
+            <div class="skill">
+                Django
+                <div class="description">A high-level Python web framework that encourages rapid, secure, and scalable development.</div>
+            </div>
+        </div>
+
+        <!-- Tools Category -->
+        <div class="skills-category">Tools</div>
+        <div class="skills-list">
+            <div class="skill">
+                Git
+                <div class="description">A version control system for tracking changes in source code during software development.</div>
+            </div>
+            <div class="skill">
+                Docker
+                <div class="description">A tool that packages software into containers to run consistently across different environments.</div>
+            </div>
+            <div class="skill">
+                VS Code
+                <div class="description">A lightweight, open-source code editor with extensive plugin support and customization options.</div>
+            </div>
+        </div>
+    </section>
 
 
-<section id="projects" class="projects">
-  <h2>Projects</h2>
-  <div class="projects-list">
-    <div class="project-item">
-      <span>Shram Samarth</span>
-      <div class="description">
-      <strong>Description:</strong>Developed backend functionalities for a platform providing employment to unskilled labor. Implemented a QR code system and organized service categories.
-<!--          <a href="https://www.google.com" style="color: #3498db;">Veiw Pro</a>-->
-    </div>
-  </div>
-  <div class="project-item">
-    <span>BGMI Points Table (Django Version)</span>
-    <div class="description">
-      <strong>Description:</strong> Converted BGMI points table project into a Django-based application to improve database handling and performance.<a href="https://meghraj1207.github.io/portfolio/bgmi.html" style="color: #3498db;">View Pro</a>
-    </div>
-  </div>
-  <div class="project-item">
-    <span>Portfolio Website for Architecture Business</span>
-    <div class="description">
-      <strong>Description:</strong> Created a visually appealing portfolio website to showcase project photos and provide contact details for an architecture firm.
-    </div>
-  </div>
-  <div class="project-item">
-    <span>Personal Technical Portfolio</span>
-    <div class="description">
-      <strong>Description:</strong> Developed a single-page portfolio using HTML, CSS, and JavaScript to showcase technical skills and projects.
-    </div>
-  </div>
-  <div class="project-item">
-    <span>Music Recommendation System</span>
-    <div class="description">
-      <strong>Description:</strong> Developed a recommendation system that suggests music based on user preferences, leveraging algorithms and machine learning techniques.
-    </div>
-  </div>
-</section>
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="projects-list">
+            <div class="project-item">
+                <span>Shram Samarth</span>
+                <div class="description">
+                    <strong>Description:</strong>Developed backend functionalities for a platform providing employment to unskilled labor. Implemented a QR code system and organized service categories.
+                    <!--          <a href="https://www.google.com" style="color: #3498db;">Veiw Pro</a>-->
+                </div>
+            </div>
+            <div class="project-item">
+                <span>BGMI Points Table (Django Version)</span>
+                <div class="description">
+                    <strong>Description:</strong> Converted BGMI points table project into a Django-based application to improve database handling and performance.<a href="https://meghraj1207.github.io/portfolio/bgmi.html" style="color: #3498db;">View Pro</a>
+                </div>
+            </div>
+            <div class="project-item">
+                <span>Portfolio Website for Architecture Business</span>
+                <div class="description">
+                    <strong>Description:</strong> Created a visually appealing portfolio website to showcase project photos and provide contact details for an architecture firm.
+                </div>
+            </div>
+            <div class="project-item">
+                <span>Personal Technical Portfolio</span>
+                <div class="description">
+                    <strong>Description:</strong> Developed a single-page portfolio using HTML, CSS, and JavaScript to showcase technical skills and projects.
+                </div>
+            </div>
+            <div class="project-item">
+                <span>Music Recommendation System</span>
+                <div class="description">
+                    <strong>Description:</strong> Developed a recommendation system that suggests music based on user preferences, leveraging algorithms and machine learning techniques.
+                </div>
+            </div>
+    </section>
 
-<section id="certificates" class="certificates">
-  <h2>Certificates</h2>
-  <div class="controls">
-    <button onclick="showCertificate(0)">1</button>
-    <button onclick="showCertificate(1)">2</button>
-    <button onclick="showCertificate(2)">3</button>
-    <button onclick="showCertificate(3)">4</button>
-    <button onclick="showCertificate(4)">5</button>
-  </div>
-<center><img id="certificate" class="active" src="cert1.jpg" alt="Certificate"></center>
-</section>
-<section id="section" class="section">
-  <center><a href="Resume-2.pdf" download="Resume-2.pdf">
-  <button class="download-btn">Download Resume</button>
-  </a></center>
-</section>
-<section id="contact" class="contact">
-  <h2>Contact</h2>
-  <p>Connect with me on <a href="https://www.linkedin.com/in/meghrajsinh-parmar-12a51b2aa/" target="_blank" style="color: #3498db;">LinkedIn</a> | <a href="https://www.hackerrank.com/profile/meghrajsinh012" target="_blank" style="color: #3498db;">HackerRank</a></p>
-</section>
+    <section id="certificates" class="certificates">
+        <h2>Certificates</h2>
+        <div class="controls">
+            <button onclick="showCertificate(0)">1</button>
+            <button onclick="showCertificate(1)">2</button>
+            <button onclick="showCertificate(2)">3</button>
+            <button onclick="showCertificate(3)">4</button>
+            <button onclick="showCertificate(4)">5</button>
+        </div>
+        <center><img id="certificate" class="active" src="cert1.jpg" alt="Certificate"></center>
+    </section>
+    <section id="section" class="section">
+        <center>
+            <a href="Resume-2.pdf" download="Resume-2.pdf">
+                <button class="download-btn">Download Resume</button>
+            </a>
+        </center>
+    </section>
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Connect with me on <a href="https://www.linkedin.com/in/meghrajsinh-parmar-12a51b2aa/" target="_blank" style="color: #3498db;">LinkedIn</a> | <a href="https://www.hackerrank.com/profile/meghrajsinh012" target="_blank" style="color: #3498db;">HackerRank</a></p>
+    </section>
 
-<footer>
-  <p>&copy; 2024 Meghrajsinh Parmar</p>
-</footer>
+    <footer>
+        <p>&copy; 2024 Meghrajsinh Parmar</p>
+    </footer>
 
-<script>
-  // Scroll Animation
-  const sections = document.querySelectorAll('section');
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + window.innerHeight * 0.8;
-    sections.forEach(section => {
-      if (section.offsetTop < scrollPos) {
-        section.classList.add('active');
-      }
-    });
-  });
+    <script>
+        // Scroll Animation
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY + window.innerHeight * 0.8;
+            sections.forEach(section => {
+                if (section.offsetTop < scrollPos) {
+                    section.classList.add('active');
+                }
+            });
+        });
 
-  // Certificates Slider
-  const certificates = ["cert1.jpg", "cert2.jpg", "cert3.jpg", "cert4.jpg", "cert5.jpg"];
-  let currentCertificate = 0;
+        // Certificates Slider
+        const certificates = ["cert1.jpg", "cert2.jpg", "cert3.jpg", "cert4.jpg", "cert5.jpg"];
+        let currentCertificate = 0;
 
-  function showCertificate(index) {
-    const img = document.getElementById("certificate");
-    img.src = certificates[index];
-    currentCertificate = index;
-  }
-  setInterval(() => {
-      currentCertificate = (currentCertificate + 1) % certificates.length; // Loop back to the start if at the end
-      showCertificate(currentCertificate);
-    }, 3000); 
-</script>
+        function showCertificate(index) {
+            const img = document.getElementById("certificate");
+            img.src = certificates[index];
+            currentCertificate = index;
+        }
+        setInterval(() => {
+            currentCertificate = (currentCertificate + 1) % certificates.length; // Loop back to the start if at the end
+            showCertificate(currentCertificate);
+        }, 3000);
+    </script>
 
 </body>
+
 </html>
